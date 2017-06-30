@@ -6,8 +6,6 @@ angular.module('starter.controllers', [])
   $scope.logout = function(){
     AuthService.logout();
   };
-
-  $scope.username = AuthService.getUsername();
 })
 
 .controller('LoginCtrl', function($scope, AuthService, $state) {
@@ -17,7 +15,8 @@ angular.module('starter.controllers', [])
   };
 
   $scope.login = function() {
-    AuthService.login($scope.user).then(function(msg) {
+    console.log($scope.user);
+    AuthService.login($scope.user).then(function() {
       $state.go('nav.boats');
     }, function(errMsg) {
       var alertPopup = function(){

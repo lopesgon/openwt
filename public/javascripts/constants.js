@@ -1,5 +1,5 @@
 angular.module('starter.constants', [])
 
 .constant('API_ENDPOINT', {
-  url: 'https://localhost/api'
+  url: 'http://localhost:3000/api'
 });

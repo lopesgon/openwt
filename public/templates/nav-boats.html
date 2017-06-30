@@ -3,8 +3,9 @@
   <div class="list-group">
     <a class="list-group-item"
        ng-repeat="boat in boats track by boat._id">
-      <h3>{{boat.name}}</h3>
-      <p>{{boat.desc}}</p>
+      <h3>{{boat.name}} - {{boat.date}}</h3>
+      <h4>Number of travels: {{boat.voyages}}</h4>
+      <h4>Weight: {{boat.poidsTonnes}} tons</h4>
     </a>
   </div>
 </div>
