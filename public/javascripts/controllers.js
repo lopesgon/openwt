@@ -15,13 +15,10 @@ angular.module('starter.controllers', [])
   };
 
   $scope.login = function() {
-    console.log($scope.user);
     AuthService.login($scope.user).then(function() {
       $state.go('nav.boats');
-    }, function(errMsg) {
-      var alertPopup = function(){
-        console.log("LoginCtrl -> TODO: ALERT MSG")
-      }
+    }, function(err) {
+      window.alert("Unauthorized credentials.");
     });
   };
 })

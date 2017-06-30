@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+var users = [
+  {
+    username: 'fred',
+    password: 'secret'
+  }
+];
+
 var boats = [
   {
     _id: 0,
@@ -18,8 +25,20 @@ var boats = [
   }
 ];
 
+exist = function(user){
+  for(var i=0, len=users.length; i<len; i++){
+    console.log(users[i]);
+    if(users[i].username == user.username && users[i].password == user.password){
+      return true;
+    }
+  }
+  return false;
+};
+
 router.post('/auth', function(req, res) {
-  console.log(req.body.user);
+  if(!exist(req.body)){
+    res.send({success: false});
+  }
   res.send({success: true});
 })
 .get('/boats', function(req, res){
