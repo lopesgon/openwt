@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>A simple list of boats</h2>
+  <div class="list-group">
+    <a class="list-group-item"
+       ng-repeat="boat in boats track by boat._id">
+      <h3>{{boat.name}}</h3>
+      <p>{{boat.desc}}</p>
+    </a>
+  </div>
+</div>

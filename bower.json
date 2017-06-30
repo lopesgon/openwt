@@ -1,0 +1,22 @@
+{
+  "name": "openwt",
+  "description": "A simple list of boats",
+  "main": "bin/www.js",
+  "authors": [
+    "Frederic Lopes"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lopesgon/openwt",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.4",
+    "angular-ui-router": "0.3.1"
+  }
+}

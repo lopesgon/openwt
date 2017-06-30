@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/auth', function(req, res, next) {
+router.post('/auth', function(req, res) {
   res.send({res: false, desc: "TODO"});
 });
 

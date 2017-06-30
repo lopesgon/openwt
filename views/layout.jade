@@ -1,7 +1,23 @@
 doctype html
 html
   head
-    title= "Openwt Boats"
-    link(rel='stylesheet' href='/stylesheets/style.css')
-  body
+    title Openwt Boats
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='lib/bootstrap/dist/css/bootstrap.min.css')
+
+    script(src="lib/jquery/dist/jquery.min.js")
+    script(src="lib/bootstrap/dist/js/bootstrap.min.js")
+    script(src="lib/angular/angular.min.js")
+    script(src="lib/angular-ui-router/release/angular-ui-router.min.js")
+
+    script(src="javascripts/app.js")
+    script(src="javascripts/constants.js")
+    script(src="javascripts/services-auth.js")
+    script(src="javascripts/services-boats.js")
+    script(src="javascripts/controllers.js")
+
+    base(href="/")
+
+  body(ng-app="starter" ng-controller="BoatsAppCtrl")
     block content
+    div(ui-view)
