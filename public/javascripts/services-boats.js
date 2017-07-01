@@ -15,11 +15,27 @@ angular.module('starter.services-boats', [])
     },
 
     add: function(boat) {
-      console.log("TODO: BoatsService.add(boat)");
+      return $q(function(resolve, reject){
+        $http.post(API_ENDPOINT.url + '/boats').then(function(result){
+          if(result.data.success){
+            resolve();
+          }else{
+            reject();
+          }
+        });
+      });
     },
 
     delete: function(boat) {
-      console.log("TODO: BoatsService.delete(boat)");
+      return $q(function(resolve, reject){
+        $http.delete(API_ENDPOINT.url + '/boats/' + boat._id).then(function(result){
+          if(result.data.success){
+            resolve();
+          }else{
+            reject();
+          }
+        });
+      });
     }
   };
 });
