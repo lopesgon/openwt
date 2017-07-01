@@ -27,8 +27,17 @@ var boats = [
 
 exist = function(user){
   for(var i=0, len=users.length; i<len; i++){
-    console.log(users[i]);
     if(users[i].username == user.username && users[i].password == user.password){
+      return true;
+    }
+  }
+  return false;
+};
+
+deleteBoat = function(boat){
+  for(var i=0, len=boats.length; i<len; i++){
+    if(boats._id == boat._id){
+      boats.splice(i, 1);
       return true;
     }
   }
@@ -43,6 +52,16 @@ router.post('/auth', function(req, res) {
 })
 .get('/boats', function(req, res){
   res.send({success: true, boats: boats})
+})
+.post('/boats', function(req,res){
+  var boat = req.body.boat;
+  boats.add(boat);
+})
+.delete('/boats/:boatId', function(req, res){
+  if(!deleteBoat(req.params.boatId)){
+    res.send({success: false});
+  }
+  res.send({success: true});
 });
 
 module.exports = router;
