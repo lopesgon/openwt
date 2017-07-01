@@ -56,6 +56,7 @@ router.post('/auth', function(req, res) {
 .post('/boats', function(req,res){
   var boat = req.body.boat;
   boats.add(boat);
+  res.send({success:true});
 })
 .delete('/boats/:boatId', function(req, res){
   if(!deleteBoat(req.params.boatId)){

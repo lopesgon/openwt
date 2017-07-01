@@ -26,6 +26,12 @@ angular.module('starter.controllers', [])
 .controller('BoatsCtrl', function($scope, BoatsService) {
   $scope.boats = [];
 
+  var range = [];
+  for(var first = 1901, last = new Date().getFullYear(); first <= last; first++){
+    range.push(first);
+  }
+  $scope.years = range;
+
   BoatsService.getList().then(function(res){
     $scope.boats = res;
   }, function(errMsg) {
@@ -40,9 +46,15 @@ angular.module('starter.controllers', [])
     });
   };
 
-  $scope.add = function(boat){
+  $scope.submit = function(){
+    var boat = {
+      name: $scope.boatName,
+      date: undefined,
+      voyages: 0,
+      poidsTonnes: undefined
+    };
     BoatsService.add(boat).then(function(){
-      $scope.boats.add(boat);
+      $scope.boats.push(boat);
     }, function(err){
       console.log("ERROR HANDLER ON: " + err);
     });
