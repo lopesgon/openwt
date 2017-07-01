@@ -6,7 +6,11 @@
       <h3>{{boat.name}} - {{boat.date}}</h3>
       <h4>Number of travels: {{boat.voyages}}</h4>
       <h4>Weight: {{boat.poidsTonnes}} tons</h4>
-      <button class="btnboat btn-danger">Delete</button>
+      <button ng-click="delete(boat)" class="btnboat btn-danger">Delete</button>
     </a>
   </div>
+</div>
+
+<div class="section">
+  <button ng-click="add()" id="addboat" class="btn-primary">+</button>
 </div>
