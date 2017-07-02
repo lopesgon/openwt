@@ -16,7 +16,7 @@ angular.module('starter.services-boats', [])
 
     add: function(boat) {
       return $q(function(resolve, reject){
-        $http.post(API_ENDPOINT.url + '/boats').then(function(result){
+        $http.post(API_ENDPOINT.url + '/boats', boat).then(function(result){
           if(result.data.success){
             resolve();
           }else{

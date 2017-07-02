@@ -51,10 +51,15 @@ angular.module('starter.controllers', [])
       name: $scope.boatName,
       date: undefined,
       voyages: 0,
-      poidsTonnes: undefined
+      poidsTonnes: 1000
     };
     BoatsService.add(boat).then(function(){
-      $scope.boats.push(boat);
+      $scope.boats.push({
+        name: $scope.boatName,
+        date: undefined,
+        voyages: 0,
+        poidsTonnes: 1000
+      });
     }, function(err){
       console.log("ERROR HANDLER ON: " + err);
     });
