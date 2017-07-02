@@ -53,14 +53,14 @@ exist = function(user, callback){
   return callback(false);
 };
 
-deleteBoat = function(boat, callback){
+deleteBoat = function(id, callback){
   for(var i=0, len=boats.length; i<len; i++){
-    if(boats._id === boat._id){
+    if(boats[i]._id == id){
       boats.splice(i, 1);
-      return callback(true);
+      return callback(undefined, true);
     }
   }
-  return callback(false);
+  return callback({msg: "unfound element"}, false);
 };
 
 router.post('/auth', function(req, res) {
@@ -85,9 +85,9 @@ router.post('/auth', function(req, res) {
   });
 })
 .delete('/boats/:boatId', function(req, res){
-  deleteBoat(req.params.boatId, function(result){
-    console.log(result);
-    if(!result){
+  deleteBoat(req.params.boatId, function(err, result){
+    if(err){
+      console.log("router.delete('/boats/:boatId'): " + err);
       res.send({success:false});
     }else{
       res.send({success:true});
