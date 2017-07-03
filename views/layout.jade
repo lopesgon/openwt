@@ -4,6 +4,7 @@ html
     title Openwt Boats
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet' href='stylesheets/style.css')
+    link(rel='stylesheet' href='app/boatsView/boatsView.css')
     link(rel='stylesheet' href='lib/bootstrap/dist/css/bootstrap.min.css')
 
     script(src="lib/jquery/dist/jquery.min.js")
@@ -11,14 +12,15 @@ html
     script(src="lib/angular/angular.min.js")
     script(src="lib/angular-ui-router/release/angular-ui-router.min.js")
 
-    script(src="javascripts/app.js")
-    script(src="javascripts/constants.js")
-    script(src="javascripts/services-auth.js")
-    script(src="javascripts/services-boats.js")
-    script(src="javascripts/controllers.js")
+    script(src="app/app.js")
+    script(src="app/constants.js")
+    script(src="app/loginView/loginView.js")
+    script(src="app/navbarView/navbarView.js")
+    script(src="app/boatsView/boatsView.js")
 
     base(href="/")
 
-  body(ng-app="starter" ng-controller="BoatsAppCtrl")
+  body(ng-app="starter")
     block content
+    div(ui-view="navbar")
     div(ui-view)

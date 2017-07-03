@@ -63,7 +63,7 @@ deleteBoat = function(id, callback){
   return callback({msg: "unfound element"}, false);
 };
 
-router.post('/auth', function(req, res) {
+router.post('/login', function(req, res) {
   exist(req.body, function(result){
     if(!result){
       res.send({success: false});

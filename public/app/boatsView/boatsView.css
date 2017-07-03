@@ -1,0 +1,47 @@
+.btnboat {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  height: 50%;
+  border-radius: 10px;
+  transform: translate(0, -50%);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.list-group-item:hover .btnboat{
+  visibility: visible;
+  opacity: 1;
+}
+
+.section{
+  position: relative;
+  width: 100%;
+}
+
+#addboat {
+  position: relative;
+  width: 5vw;
+  height: 5vw;
+  opacity: 0.5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#addboat:hover {
+  opacity: 1;
+  width: 6vw;
+  height: 6vw;
+}
