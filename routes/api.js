@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mysql = require('../app/database/mysql');
 
 var users = [
   {
@@ -73,7 +74,11 @@ router.post('/login', function(req, res) {
   });
 })
 .get('/boats', function(req, res){
-  res.send({success: true, boats: boats})
+  mysql.connection(function(result){
+    if(!result) res.send({success: false, boats: undefined});
+    res.send({success: true, boats: boats});
+  });
+  // res.send({success: true, boats: boats})
 })
 .post('/boats', function(req, res){
   add(req.body, function(result){

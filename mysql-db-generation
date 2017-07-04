@@ -1,9 +1,10 @@
 -- DATABASE CREATED BY FREDERIC LOPES MAGALHAES - 2017/07/04
-DROP DATABASE OpenwtBoatsDB;
+-- CREATE USER  'administrator'@'localhost' IDENTIFIED BY 'admin';
 
-CREATE DATABASE OpenwtBoatsDB;
+DROP DATABASE IF EXISTS openwtboatsdb;
+CREATE DATABASE openwtboatsdb;
 
-USE OpenwtBoatsDB;
+USE openwtboatsdb;
 DROP TABLE IF EXISTS owt_users, owt_boats;
 
 CREATE TABLE owt_users (
@@ -22,8 +23,8 @@ CREATE TABLE owt_boats (
 );
 
 -- insert authorized users into table owt_users
-INSERT INTO owt_users (user_name, user_password) VALUES('frederic', 'lopes');
-INSERT INTO owt_users (user_name, user_password) VALUES('maxime', 'hochet');
+INSERT INTO owt_users (user_name, user_password) VALUES('frederic', 'secret');
+INSERT INTO owt_users (user_name, user_password) VALUES('maxime', 'secret');
 
 -- insert data into table owt_boats
 INSERT INTO owt_boats (boat_name, boat_year) VALUES('Titanic', 1901);

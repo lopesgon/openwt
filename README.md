@@ -19,7 +19,8 @@ npm install
 bower install
 ```
 
-Then, the database, tables and rows have to be imported. Go to MySQL UI or from terminal and import ```mysql-db-generation.sql``` file. 
+Then, create a database named ```openwtboatsdb```. 
+Once created, import ```mysql-db-generation.sql``` file containing tables and rows by using a MySQL UI (workbench, phpmyadmin) or from the terminal. 
 
 Once previous steps done, go to ```bin``` folder and run ```node www```.
 
