@@ -1,6 +1,14 @@
 # Open Web Technology - A simple list of boats
 
-A web application made of two pages: an authentification page & an authenticated page diplaying a list of boats.
+A web application made of two pages: an authentication page and an authenticated page to display a list of boats.
+
+## Prerequisites
+
+In order to be able to run this small web application, you may have pre-installed:
+
+* [Node.js](https://nodejs.org/en/) - Node.js server
+* [NPM](https://www.npmjs.com) - Node Package Manager
+* [MySQL](https://dev.mysql.com/downloads/) - MySQL 
 
 ## Installing
 
@@ -11,6 +19,8 @@ npm install
 bower install
 ```
 
-Once all dependencies installed, go to ```bin``` folder and run ```node www```.
+Then, the database, tables and rows have to be imported. Go to MySQL UI or from terminal and import ```mysql-db-generation.sql``` file. 
 
-You can access to the server on a browser at the url ```http://www.localhost:3000```.
+Once previous steps done, go to ```bin``` folder and run ```node www```.
+
+You can access to the server on a browser at the url ```http://localhost:3000```.
