@@ -19,6 +19,13 @@ module.exports = {
     });
   },
 
+  select: function(query, callback){
+    connectionSql.query(query, function(err, result){
+      if (err) throw err;
+      return callback(result);
+    });
+  },
+
   end: function(){
     connectionSql.end(function(err){
       console.log("NO OPEN DATABASE CONNECTION.");

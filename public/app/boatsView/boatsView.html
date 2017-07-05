@@ -2,10 +2,8 @@
   <h2>A simple list of boats</h2>
   <div class="list-group">
     <a class="list-group-item"
-       ng-repeat="boat in boats track by boat._id">
-      <h3>{{boat.name}} - {{boat.date}}</h3>
-      <h4>Number of travels: {{boat.voyages}}</h4>
-      <h4>Weight: {{boat.poidsTonnes}} tons</h4>
+       ng-repeat="boat in boats track by boat.boat_id">
+      <h3>{{boat.boat_name}} - {{boat.boat_year}}</h3>
       <button ng-click="delete(boat)" class="btnboat btn-danger">Delete</button>
     </a>
   </div>

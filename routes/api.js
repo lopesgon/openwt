@@ -75,10 +75,11 @@ router.post('/login', function(req, res) {
 })
 .get('/boats', function(req, res){
   mysql.connection(function(result){
-    if(!result) res.send({success: false, boats: undefined});
-    res.send({success: true, boats: boats});
+    var query = 'SELECT * FROM owt_boats';
+    mysql.select(query, function(result){
+      res.send({success: true, boats: result});
+    });
   });
-  // res.send({success: true, boats: boats})
 })
 .post('/boats', function(req, res){
   add(req.body, function(result){

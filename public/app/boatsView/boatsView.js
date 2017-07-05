@@ -44,7 +44,6 @@ angular.module('starter.boatsView', [])
       console.log("ERROR HANDLER ON: " + err);
     });
   }
-
 }])
 
 .service('BoatsService', function($q, $http, API_ENDPOINT) {
@@ -53,6 +52,7 @@ angular.module('starter.boatsView', [])
       return $q(function(resolve, reject){
         $http.get(API_ENDPOINT.url + '/boats').then(function(result){
           if(result.data.success){
+            console.log(result.data.boats);
             resolve(result.data.boats);
           }else{
             reject();
