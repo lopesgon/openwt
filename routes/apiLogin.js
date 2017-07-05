@@ -1,31 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('../app/database/mysql');
-
-var users = [
-  {
-    username: 'fred',
-    password: 'secret'
-  }
-];
-
-exist = function(user, callback){
-  for(var i=0, len=users.length; i<len; i++){
-    if(users[i].username == user.username && users[i].password == user.password){
-      return callback(true);
-    }
-  }
-  return callback(false);
-};
+var config = require('../config/database').config;
+var mysql = require('mysql');
+var pool = mysql.createPool(config);
 
 router.post('/', function(req, res) {
-  exist(req.body, function(result){
-    if(!result){
-      res.send({success: false});
-    }else{
+  var user = req.body;
+  var query = 'SELECT * FROM owt_users WHERE user_name = "' + user.username + '"';
+  pool.query(query, function(error, results){
+    if(error) throw error;
+    if(results.length == 1 && results[0].user_password == user.password) {
       res.send({success: true});
+      return;
     }
-  });
+    res.send({success:false});
+    });
 });
 
 module.exports = router;
