@@ -4,6 +4,14 @@ var config = require('../config/database').config;
 var mysql = require('mysql');
 var pool = mysql.createPool(config);
 
+var getBoat = function(id, callback){
+  var query = "SELECT * FROM owt_boats WHERE boat_id = ?"
+  pool.query(query, [id], function(error, result){
+    if(error) throw error;
+    return callback(result);
+  });
+};
+
 router.get('/', function(req, res){
   var query = 'SELECT * FROM owt_boats';
   pool.query(query, function(error, results){
@@ -17,7 +25,9 @@ router.get('/', function(req, res){
   var query = 'INSERT INTO owt_boats (boat_name, boat_year) VALUES(?,?)';
   pool.query(query, args, function(error, results){
     if(error) throw error;
-    res.send({success:true});
+    getBoat(results.insertId, function(result){
+      res.send({success:true, boat: result});
+    });
   });
 })
 .delete('/:boatId', function(req, res){
