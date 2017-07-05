@@ -14,34 +14,27 @@ angular.module('starter.boatsView', [])
 
   BoatsService.getList().then(function(res){
     $scope.boats = res;
-  }, function(errMsg) {
-    console.log("ERROR HANDLER: " + errMsg);
+  }, function(error) {
+    console.log("Cannot get boats list: " + error);
   });
 
   $scope.delete = function(boat) {
-    BoatsService.delete(boat).then(function(){
+    BoatsService.delete(boat.boat_id).then(function(){
       $scope.boats.splice($scope.boats.indexOf(boat), 1);
-    }, function(err){
-      console.log("ERROR HANDLER ON: " + err);
+    }, function(error){
+      console.log("Cannot delete boat: " + error);
     });
   };
 
   $scope.submit = function(){
     var boat = {
       name: $scope.boatName,
-      date: undefined,
-      voyages: 0,
-      poidsTonnes: 1000
+      year: $scope.boatYear
     };
     BoatsService.add(boat).then(function(){
-      $scope.boats.push({
-        name: $scope.boatName,
-        date: undefined,
-        voyages: 0,
-        poidsTonnes: 1000
-      });
-    }, function(err){
-      console.log("ERROR HANDLER ON: " + err);
+      $scope.boats.push(boat);
+    }, function(error){
+      console.log("Cannot add boat: " + error);
     });
   }
 }])
@@ -52,7 +45,6 @@ angular.module('starter.boatsView', [])
       return $q(function(resolve, reject){
         $http.get(API_ENDPOINT.url + '/boats').then(function(result){
           if(result.data.success){
-            console.log(result.data.boats);
             resolve(result.data.boats);
           }else{
             reject();
@@ -73,9 +65,9 @@ angular.module('starter.boatsView', [])
       });
     },
 
-    delete: function(boat) {
+    delete: function(id) {
       return $q(function(resolve, reject){
-        $http.delete(API_ENDPOINT.url + '/boats/' + boat._id).then(function(result){
+        $http.delete(API_ENDPOINT.url + '/boats/' + id).then(function(result){
           if(result.data.success){
             resolve();
           }else{

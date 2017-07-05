@@ -12,10 +12,21 @@ router.get('/', function(req, res){
   });
 })
 .post('/', function(req, res){
+  var newBoat = req.body;
+  var args = [newBoat.name, newBoat.year];
   var query = 'INSERT INTO owt_boats (boat_name, boat_year) VALUES(?,?)';
+  pool.query(query, args, function(error, results){
+    if(error) throw error;
+    res.send({success:true});
+  });
 })
 .delete('/:boatId', function(req, res){
-
+  var args = [req.params.boatId];
+  var query = 'DELETE FROM owt_boats WHERE boat_id = ?';
+  pool.query(query, args, function(error){
+    if(error) throw error;
+    res.send({success:true});
+  })
 });
 
 module.exports = router;
