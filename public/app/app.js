@@ -2,6 +2,7 @@ angular.module('starter', [
   'starter.loginView',
   'starter.navbarView',
   'starter.boatsView',
+  'starter.createBoatView',
   'starter.constants',
   'ui.router'])
 
@@ -29,6 +30,10 @@ angular.module('starter', [
           'navbar': {
             templateUrl: 'app/navbarView/navbarView.html',
             controller: 'NavbarViewCtrl'
+          },
+          'createBoatModal@boatsView': {
+            templateUrl:'app/createBoatView/createBoatView.html',
+            controller: 'CreateBoatViewCtrl'
           }
         }
       });

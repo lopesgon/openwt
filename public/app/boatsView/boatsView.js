@@ -26,17 +26,6 @@ angular.module('starter.boatsView', [])
     });
   };
 
-  $scope.submit = function(){
-    var boat = {
-      name: $scope.boatName,
-      year: $scope.boatStartYear
-    };
-    BoatsService.add(boat).then(function(boat){
-      $scope.boats.push(boat[0]);
-    }, function(){
-      console.log("Cannot add boat.");
-    });
-  }
 }])
 
 .service('BoatsService', function($q, $http, API_ENDPOINT) {
@@ -46,18 +35,6 @@ angular.module('starter.boatsView', [])
         $http.get(API_ENDPOINT.url + '/boats').then(function(result){
           if(result.data.success){
             resolve(result.data.boats);
-          }else{
-            reject();
-          }
-        });
-      });
-    },
-
-    add: function(boat) {
-      return $q(function(resolve, reject){
-        $http.post(API_ENDPOINT.url + '/boats', boat).then(function(result){
-          if(result.data.success){
-            resolve(result.data.boat);
           }else{
             reject();
           }
