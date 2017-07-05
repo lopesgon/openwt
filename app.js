@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 var index = require('./routes/index');
-var api = require('./routes/api');
+var apiBoats = require('./routes/apiBoats');
+var apiLogin = require('./routes/apiLogin');
 
 var app = express();
 
@@ -26,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // SECURITY ISSUE
 app.use(cors());
 
-app.use('/api', api);
+app.use('/api/login', apiLogin);
+app.use('/api/boats', apiBoats);
 app.use('/', index);
 
 // catch 404 and forward to error handler

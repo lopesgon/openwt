@@ -2,30 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('../app/database/mysql');
 
-var users = [
-  {
-    username: 'fred',
-    password: 'secret'
-  }
-];
-
-var boats = [
-  {
-    _id: 0,
-    name: "Nébuleuse",
-    date: 2017,
-    voyages: 0,
-    poidsTonnes: 20000
-  },
-  {
-    _id: 1,
-    name: "Titanic",
-    date: 1907,
-    voyages: 1,
-    poidsTonnes: 52310
-  }
-];
-
 var id = 2;
 add = function(data, callback){
   try {
@@ -45,15 +21,6 @@ add = function(data, callback){
   return callback(true);
 };
 
-exist = function(user, callback){
-  for(var i=0, len=users.length; i<len; i++){
-    if(users[i].username == user.username && users[i].password == user.password){
-      return callback(true);
-    }
-  }
-  return callback(false);
-};
-
 deleteBoat = function(id, callback){
   for(var i=0, len=boats.length; i<len; i++){
     if(boats[i]._id == id){
@@ -62,18 +29,9 @@ deleteBoat = function(id, callback){
     }
   }
   return callback({msg: "unfound element"}, false);
-};
+}
 
-router.post('/login', function(req, res) {
-  exist(req.body, function(result){
-    if(!result){
-      res.send({success: false});
-    }else{
-      res.send({success: true});
-    }
-  });
-})
-.get('/boats', function(req, res){
+router.get('/', function(req, res){
   mysql.connection(function(result){
     var query = 'SELECT * FROM owt_boats';
     mysql.select(query, function(result){
@@ -81,7 +39,7 @@ router.post('/login', function(req, res) {
     });
   });
 })
-.post('/boats', function(req, res){
+.post('/', function(req, res){
   add(req.body, function(result){
     if(!result){
       res.send({success:false});
@@ -90,7 +48,7 @@ router.post('/login', function(req, res) {
     }
   });
 })
-.delete('/boats/:boatId', function(req, res){
+.delete('/:boatId', function(req, res){
   deleteBoat(req.params.boatId, function(err, result){
     if(err){
       console.log("router.delete('/boats/:boatId'): " + err);
