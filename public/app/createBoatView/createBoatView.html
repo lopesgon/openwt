@@ -1,3 +1,29 @@
+<div id="addBoatModal" class="modal">
+  <div class="modal-content">
+    <h4>New boat form</h4>
+    <div class="row">
+      <form class="col s12" ng-submit="submit()">
+        <div class="row">
+          <div class="input-field col s12">
+            <input ng-model="boatName" id="boatName" type="text" class="validate">
+            <label for="boatName">Boat name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input ng-model="boatStartYear" id="boatStartYear" type="text" class="validate">
+            <label for="boatStartYear">Start year</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" ng-click="submit()" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+  </div>
+</div>
+
+<!--
 <div id="addBoatModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -25,3 +51,4 @@
     </div>
   </div>
 </div>
+-->

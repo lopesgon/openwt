@@ -11,6 +11,7 @@ angular.module('starter.createBoatView', [])
     };
 
     CreateBoatService.add(boat).then(function(boat){
+      Materialize.toast('New boat to the list', 4000);
       $scope.boats.push(boat[0]);
     }, function(){
       console.log("Cannot add boat.");
@@ -32,4 +33,10 @@ angular.module('starter.createBoatView', [])
       });
     }
   }
+});
+
+$(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
+
 });
