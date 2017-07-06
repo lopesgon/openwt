@@ -11,3 +11,11 @@ angular.module('starter.navbarView', [])
     LoginService.logout();
   };
 }]);
+
+/* INITIALIZATION NAVBAR COMPONENTS */
+$(document).ready(function () {
+  $(".button-collapse").sideNav({
+    draggable: true,
+    closeOnClick: true
+  });
+});
