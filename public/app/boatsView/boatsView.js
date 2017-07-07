@@ -20,6 +20,7 @@ angular.module('starter.boatsView', [])
 
   $scope.delete = function(boat) {
     BoatsService.delete(boat.boat_id).then(function(){
+      Materialize.toast(boat.boat_name + " deleted.", 4000);
       $scope.boats.splice($scope.boats.indexOf(boat), 1);
     }, function(){
       console.log("Cannot delete boat.");
