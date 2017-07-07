@@ -22,6 +22,8 @@ bower install
 Then, create a database named ```openwtboatsdb```. 
 Once created, import ```mysql-db-generation.sql``` file containing tables and rows by using a MySQL UI (workbench, phpmyadmin) or from the terminal. 
 
+Do not forget to update the database configuration file ```config/database.js``` regarding to your MySQL settings.
+ 
 Once previous steps done, go to ```bin``` folder and run ```node www```.
 
 You can access to the server on a browser at the url ```http://localhost:3000```.
