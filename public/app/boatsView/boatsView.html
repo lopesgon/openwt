@@ -3,8 +3,9 @@
     <h4>List of boats</h4>
   </li>
   <li ng-repeat="boat in boats track by boat.boat_id" class="collection-item">
-    <div>{{boat.boat_name}} - {{boat.boat_year}}
-      <a ng-click="delete(boat)" class="secondary-content">
+    <div>
+      {{boat.boat_name}} - {{boat.boat_year}}
+      <a href="#!" ng-click="delete(boat)" class="secondary-content">
         <i class="material-icons">delete</i>
       </a>
     </div>
