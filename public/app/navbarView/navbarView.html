@@ -3,10 +3,11 @@
     <a href="/boats" class="brand-logo">Boats</a>
     <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="side-nav" id="mobile-nav">
-      <li><a ng-click="logout()" href="/login">logout</a></li>
+      <li><a ng-click="logout()" ui-sref="loginView">logout</a></li>
     </ul>
     <ul class="right hide-on-med-and-down">
-      <li><a ng-click="logout()" href="/login">logout</a></li>
+      <li><a ui-sref="createBoatView">Create</a></li>
+      <li><a ng-click="logout()" ui-sref="loginView">Logout</a></li>
     </ul>
   </div>
 </nav>

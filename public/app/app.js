@@ -16,24 +16,38 @@ angular.module('starter', [
     $stateProvider
       .state('loginView', {
         url: '/login',
-        templateUrl: 'app/loginView/loginView.html',
-        controller: 'LoginViewCtrl'
+        views: {
+          'body': {
+            templateUrl: 'app/loginView/loginView.html',
+            controller: 'LoginViewCtrl'
+          }
+        }
       })
 
       .state('boatsView', {
         url: '/boats',
         views: {
-          '': {
+          'body': {
             templateUrl: 'app/boatsView/boatsView.html',
             controller: 'BoatsViewCtrl'
           },
           'navbar': {
             templateUrl: 'app/navbarView/navbarView.html',
             controller: 'NavbarViewCtrl'
-          },
-          'createBoatModal@boatsView': {
-            templateUrl:'app/createBoatView/createBoatView.html',
+          }
+        }
+      })
+
+      .state('createBoatView', {
+        url: '/boats/create',
+        views: {
+          'body': {
+            templateUrl: 'app/createBoatView/createBoatView.html',
             controller: 'CreateBoatViewCtrl'
+          },
+          'navbar': {
+            templateUrl: 'app/navbarView/navbarView.html',
+            controller: 'NavbarViewCtrl'
           }
         }
       });

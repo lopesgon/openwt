@@ -3,13 +3,7 @@
  */
 angular.module('starter.createBoatView', [])
 
-.controller('CreateBoatViewCtrl', ['$scope', 'CreateBoatService', function($scope, CreateBoatService) {
-
-  function resetView(){
-    $scope.boatName = undefined;
-    $scope.boatStartYear = undefined;
-    Materialize.updateTextFields();
-  }
+.controller('CreateBoatViewCtrl', ['$scope', 'CreateBoatService', '$state', function($scope, CreateBoatService, $state) {
 
   $scope.submit = function(){
     var boat = {
@@ -17,11 +11,10 @@ angular.module('starter.createBoatView', [])
       year: $scope.boatStartYear
     };
     if(boat.name && boat.year) {
-      CreateBoatService.add(boat).then(function (boat) {
-        resetView();
+      CreateBoatService.add(boat).then(function(boat) {
         $scope.boats.push(boat[0]);
         Materialize.toast('New boat to the list', 4000);
-      }, function () {
+      }, function(){
         console.log("Cannot add boat.");
       });
     }
@@ -42,9 +35,4 @@ angular.module('starter.createBoatView', [])
       });
     }
   }
-});
-
-$(document).ready(function(){
-  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-  $('#addBoatModal').modal({});
 });
