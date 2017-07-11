@@ -10,6 +10,11 @@ angular.module('starter.navbarView', [])
   $scope.logout = function(){
     LoginService.logout();
   };
+
+  $scope.creationBoat = function(){
+    // SHOULD RECEIVE A RESPONSE FROM CREATEBOATVIEW
+  };
+
 }]);
 
 /* INITIALIZATION NAVBAR COMPONENTS */

@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var pool = mysql.createPool(config);
 
 var getBoat = function(id, callback){
-  var query = "SELECT * FROM owt_boats WHERE boat_id = ?"
+  var query = "SELECT * FROM owt_boats WHERE boat_id = ?";
   pool.query(query, [id], function(error, result){
     if(error) throw error;
     return callback(result);
