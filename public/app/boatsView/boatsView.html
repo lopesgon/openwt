@@ -1,46 +1,19 @@
-<div class="container">
-  <h2>A simple list of boats</h2>
-  <div class="list-group">
-    <a class="list-group-item"
-       ng-repeat="boat in boats track by boat.boat_id">
-      <h3>{{boat.boat_name}} - {{boat.boat_year}}</h3>
-      <button ng-click="delete(boat)" class="btnboat btn-danger">Delete</button>
-    </a>
-  </div>
-</div>
-
-<div class="section">
-  <button id="addboat" class="btn-primary" data-toggle="modal" data-target="#addBoatModal">+</button>
-</div>
-
-<div ui-view="createBoatModal"></div>
-
-<!--
-<div id="addBoatModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New boat form</h4>
-      </div>
-      <form ng-submit="submit()">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="boatName">Boat name</label>
-            <input type="text" ng-model="boatName" class="form-control" id="boatName" placeholder="Boat name">
-          </div>
-          <div class="form-group">
-            <label for="boatStartYear">Release date</label>
-            <select class="form-control" ng-model="boatStartYear" id="boatStartYear">
-              <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button ng-click="submit()" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
-        </div>
-      </form>
+<ul class="collection with-header">
+  <li class="collection-header">
+    <h4>List of boats</h4>
+  </li>
+  <li ng-repeat="boat in boats track by boat.boat_id" class="collection-item">
+    <div>
+      {{boat.boat_name}} - {{boat.boat_year}}
+      <a href="#!" ng-click="delete(boat)" class="secondary-content">
+        <i class="material-icons">delete</i>
+      </a>
     </div>
-  </div>
+  </li>
+</ul>
+
+<div class="fixed-action-btn">
+  <a ui-sref="createBoatView" class="btn-floating btn-large red ">
+    <i class="large material-icons">add</i>
+  </a>
 </div>
--->

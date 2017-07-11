@@ -20,6 +20,7 @@ angular.module('starter.boatsView', [])
 
   $scope.delete = function(boat) {
     BoatsService.delete(boat.boat_id).then(function(){
+      Materialize.toast(boat.boat_name + " deleted.", 4000);
       $scope.boats.splice($scope.boats.indexOf(boat), 1);
     }, function(){
       console.log("Cannot delete boat.");
@@ -29,13 +30,16 @@ angular.module('starter.boatsView', [])
 }])
 
 .service('BoatsService', function($q, $http, API_ENDPOINT) {
+  var boats = undefined;
+
   return {
     getList: function() {
       return $q(function(resolve, reject){
-        $http.get(API_ENDPOINT.url + '/boats').then(function(result){
-          if(result.data.success){
-            resolve(result.data.boats);
-          }else{
+        $http.get(API_ENDPOINT.url + '/boats').then(function (result) {
+          if (result.data.success) {
+            boats = result.data.boats;
+            resolve(boats);
+          } else {
             reject();
           }
         });
@@ -52,6 +56,20 @@ angular.module('starter.boatsView', [])
           }
         });
       });
+    },
+
+    add: function (boat) {
+      return $q(function (resolve, reject) {
+        $http.post(API_ENDPOINT.url + '/boats', boat).then(function (result) {
+          if (result.data.success) {
+            boats.push = result.data.boat;
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      });
     }
+
   };
 });

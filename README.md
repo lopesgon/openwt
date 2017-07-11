@@ -8,7 +8,7 @@ In order to be able to run this small web application, you may have pre-installe
 
 * [Node.js](https://nodejs.org/en/) - Node.js server
 * [NPM](https://www.npmjs.com) - Node Package Manager
-* [MySQL](https://dev.mysql.com/downloads/) - MySQL 
+* [MySQL](https://dev.mysql.com/downloads/) - MySQL
 
 ## Installing
 
